@@ -119,7 +119,7 @@ time = None
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            running = false
             
     new_time = pygame.time.get_ticks() / 1000
     delta_time = new_time - (time or new_time)
