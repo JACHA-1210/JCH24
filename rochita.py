@@ -73,7 +73,7 @@ class ParticlePool:
             elif self.first_free < self.first_active:
                 if not (self.first_free <= i < self.first_active):
                     self.particles[i].draw(surface)
-                    
+
 def point_on_heart(t):
     x = 160 * math.pow(math.sin(t), 3)
     y = 130 * math.cos(t) - 50*math.cos(2*t) - 20*math.cos(3*t) - 10*math.cos(4*t) + 25
@@ -85,6 +85,11 @@ particle_rate = NUM_PARTICULAS / DURACION_PARTICULA
 running = True
 clock = pygame.time.Clock()
 time = None
+
+FONT_SIZE = 32
+TEXT_COLOR = (255, 255, 255)
+FONT = pygame.font.SysFont(None, FONT_SIZE)
+TEXT_SURFACE = FONT.render("Te quiero Rochita <3", True, TEXT_COLOR)
 
 while running:
     for event in pygame.event.get():
@@ -110,6 +115,9 @@ while running:
     particles.update(delta_time)
     particles.draw(screen)
     
+    text_rect = TEXT_SURFACE.get_rect(center=(ANCHO_VENTANA // 2, ALTURA_VENTANA // 2))
+    screen.blit(TEXT_SURFACE, text_rect)
+
     pygame.display.flip()
     
     clock.tick(60)
